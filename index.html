@@ -6,117 +6,115 @@
     <title>News Aggregator Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body>
     <div class="min-h-screen">
         <!-- Header -->
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto px-4 py-6">
                 <h1 class="text-3xl font-bold text-gray-900">News Aggregator Dashboard</h1>
-                <p class="text-gray-600 mt-2">Latest news from multiple sources</p>
+                <p class="text-gray-600 mt-2">Latest news from multiple sources - Celebrity, Pop Culture & Pakistan</p>
             </div>
         </header>
-
         <!-- Main Content -->
         <main class="max-w-7xl mx-auto px-4 py-12">
             <!-- News Grid -->
-            <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="news-container">
                 <!-- News items will be rendered here -->
             </div>
         </main>
     </div>
-
     <!-- Summary Modal -->
-    <div id="summary-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50" id="summary-modal">
         <div class="bg-white rounded-lg p-6 max-w-2xl w-full mx-4">
             <h2 class="text-2xl font-bold mb-4">Article Summary</h2>
-            <div id="summary-content" class="mb-4 text-gray-700"></div>
-            <button onclick="document.getElementById('summary-modal').classList.add('hidden')" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Close</button>
+            <div class="mb-4 text-gray-700" id="summary-content"></div>
+            <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onclick="document.getElementById('summary-modal').classList.add('hidden')">Close</button>
         </div>
     </div>
 
     <script>
-        // Sample news data with mixed sources and thumbnail images
+        // Sample news data with mixed sources - Celebrity/Pop Culture + Pakistani News
         const articles = [
             {
                 id: 1,
-                title: "Global Climate Summit Reaches Major Agreement",
-                description: "World leaders announce unprecedented commitment to reduce carbon emissions by 2030.",
-                source: { name: "BBC News" },
-                urlToImage: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=300&h=200&fit=crop",
-                url: "https://bbc.com",
-                publishedAt: "2025-10-29T10:00:00Z"
+                title: "Celebrity Alert: Hollywood A-Lister Announces Surprise Engagement",
+                description: "One of Hollywood's biggest stars shares exciting news about their engagement on social media, sending fans into frenzy.",
+                source: { name: "Entertainment Weekly" },
+                urlToImage: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=300&h=200&fit=crop",
+                url: "https://ew.com",
+                publishedAt: "2025-10-30T02:00:00Z"
             },
             {
                 id: 2,
-                title: "Tech Giant Launches Revolutionary AI Assistant",
-                description: "New artificial intelligence system promises to transform workplace productivity across industries.",
-                source: { name: "CNN" },
-                urlToImage: "https://images.unsplash.com/photo-1677442d019cecf8971da1a130ee6055?w=300&h=200&fit=crop",
-                url: "https://cnn.com",
-                publishedAt: "2025-10-29T09:30:00Z"
+                title: "Pop Star Drops Surprise Album: Breaking Records Within Hours",
+                description: "The highly anticipated album debut breaks streaming records and dominates charts globally within its first day of release.",
+                source: { name: "Billboard" },
+                urlToImage: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300&h=200&fit=crop",
+                url: "https://billboard.com",
+                publishedAt: "2025-10-30T01:30:00Z"
             },
             {
                 id: 3,
-                title: "Stock Markets Rally Following Economic Data Release",
-                description: "Investors react positively to stronger than expected employment figures and GDP growth.",
-                source: { name: "AP News" },
-                urlToImage: "https://images.unsplash.com/photo-1611974212247-aeb36a3161aa?w=300&h=200&fit=crop",
-                url: "https://apnews.com",
-                publishedAt: "2025-10-29T09:00:00Z"
+                title: "Fashion Week Showcases Bold Trends: Celebrity Style Statements",
+                description: "International fashion week features celebrity appearances and red carpet moments that define the upcoming season's hottest trends.",
+                source: { name: "Vogue" },
+                urlToImage: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300&h=200&fit=crop",
+                url: "https://vogue.com",
+                publishedAt: "2025-10-30T01:00:00Z"
             },
             {
                 id: 4,
-                title: "Major Medical Breakthrough in Cancer Treatment",
-                description: "Researchers announce successful clinical trials of new immunotherapy targeting rare cancer types.",
-                source: { name: "BBC News" },
-                urlToImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=300&h=200&fit=crop",
-                url: "https://bbc.com",
-                publishedAt: "2025-10-29T08:45:00Z"
+                title: "Pakistan News: Tech Startup Unicorn Launched in Karachi",
+                description: "A new Pakistani technology startup achieves unicorn status with innovative solutions tailored for South Asian markets, attracting international investment.",
+                source: { name: "ProPakistani" },
+                urlToImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=200&fit=crop",
+                url: "https://propakistani.pk",
+                publishedAt: "2025-10-30T00:45:00Z"
             },
             {
                 id: 5,
-                title: "International Space Mission Returns Successfully",
-                description: "Astronauts complete six-month mission aboard the International Space Station with new discoveries.",
-                source: { name: "CNN" },
-                urlToImage: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=200&fit=crop",
-                url: "https://cnn.com",
-                publishedAt: "2025-10-29T08:15:00Z"
+                title: "Celebrity News: Award Show Scandal Shocks Fans Worldwide",
+                description: "An unexpected moment at the latest awards ceremony becomes a trending topic across social media platforms and entertainment news outlets.",
+                source: { name: "TMZ" },
+                urlToImage: "https://images.unsplash.com/photo-1478720568477-152d9e3fb686?w=300&h=200&fit=crop",
+                url: "https://tmz.com",
+                publishedAt: "2025-10-30T00:15:00Z"
             },
             {
                 id: 6,
-                title: "Record Tourism Numbers Boost Economy",
-                description: "Travel and hospitality sectors experience unprecedented growth following travel recovery surge.",
-                source: { name: "AP News" },
-                urlToImage: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=300&h=200&fit=crop",
-                url: "https://apnews.com",
-                publishedAt: "2025-10-29T07:50:00Z"
+                title: "Pakistan News: Lahore Film Festival Celebrates South Asian Cinema",
+                description: "The prestigious Lahore Film Festival showcases cutting-edge productions from Pakistan and neighboring countries, attracting filmmakers and celebrities from the region.",
+                source: { name: "Dawn" },
+                urlToImage: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=300&h=200&fit=crop",
+                url: "https://dawn.com",
+                publishedAt: "2025-10-29T23:45:00Z"
             },
             {
                 id: 7,
-                title: "Environmental Initiative Protects Million Acres of Forest",
-                description: "Global partnership launches ambitious reforestation project spanning multiple continents.",
-                source: { name: "BBC News" },
-                urlToImage: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop",
-                url: "https://bbc.com",
-                publishedAt: "2025-10-29T07:30:00Z"
+                title: "Celebrity Breakthrough: Rising Star Makes Hollywood Debut",
+                description: "A breakthrough performance at a major film festival launches an international acting career, earning critical acclaim and industry recognition.",
+                source: { name: "Variety" },
+                urlToImage: "https://images.unsplash.com/photo-1489599849228-bed96c3ee601?w=300&h=200&fit=crop",
+                url: "https://variety.com",
+                publishedAt: "2025-10-29T23:15:00Z"
             },
             {
                 id: 8,
-                title: "Sports: Historic Championship Victory Crowned",
-                description: "Underdog team achieves unprecedented championship title in thrilling final match.",
-                source: { name: "CNN" },
-                urlToImage: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=300&h=200&fit=crop",
-                url: "https://cnn.com",
-                publishedAt: "2025-10-29T07:00:00Z"
+                title: "Pakistan News: Karachi Hosts International Music Festival",
+                description: "Music lovers gather in Karachi for a grand international festival featuring top local and international artists performing on multiple stages.",
+                source: { name: "Tribune" },
+                urlToImage: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300&h=200&fit=crop",
+                url: "https://tribune.com.pk",
+                publishedAt: "2025-10-29T22:45:00Z"
             },
             {
                 id: 9,
-                title: "Education Reform Initiative Reaches Milestone",
-                description: "Government implements comprehensive education modernization program affecting millions of students.",
-                source: { name: "AP News" },
-                urlToImage: "https://images.unsplash.com/photo-1427504494785-cdba58dabf8d?w=300&h=200&fit=crop",
-                url: "https://apnews.com",
-                publishedAt: "2025-10-29T06:45:00Z"
+                title: "Pop Culture: Viral TikTok Trend Launches New Dance Craze",
+                description: "A spontaneous social media trend becomes a global phenomenon, with millions of users creating variations and celebrities joining the viral challenge.",
+                source: { name: "Mashable" },
+                urlToImage: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&h=200&fit=crop",
+                url: "https://mashable.com",
+                publishedAt: "2025-10-29T22:15:00Z"
             }
         ];
 
@@ -124,14 +122,11 @@
         function renderNews() {
             const container = document.getElementById("news-container");
             container.innerHTML = "";
-
             articles.forEach(article => {
                 const card = document.createElement("div");
                 card.className = "news-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300";
-
                 const image = article.urlToImage || "https://via.placeholder.com/300x200?text=No+Image";
                 const date = new Date(article.publishedAt).toLocaleDateString();
-
                 card.innerHTML = `
                     <img src="${image}" alt="${article.title}" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -147,10 +142,8 @@
                         </div>
                     </div>
                 `;
-
                 container.appendChild(card);
             });
-
             // Add event listeners to summarize buttons
             document.querySelectorAll(".summarize-btn").forEach(btn => {
                 btn.addEventListener("click", (e) => {
@@ -163,7 +156,6 @@
         async function handleSummarizeClick(headline) {
             document.getElementById("summary-modal").classList.remove("hidden");
             document.getElementById("summary-content").innerHTML = "<p class='text-gray-600'>Generating summary...</p>";
-
             try {
                 const summary = await generateGeminiContent(headline);
                 document.getElementById("summary-content").innerHTML = `<p>${summary}</p>`;
